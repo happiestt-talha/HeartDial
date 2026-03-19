@@ -140,6 +140,7 @@ export async function POST(req) {
             const url = await uploadToCloudinary(cld, buf, {
               resource_type: 'video',
               folder: 'heartdial/audio',
+              format: 'webm',
             });
             completed++;
             console.log(`[POST /api/dials] ✅ Audio uploaded → ${url.slice(0, 60)}...`);

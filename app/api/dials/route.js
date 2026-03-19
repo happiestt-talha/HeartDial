@@ -137,6 +137,8 @@ export async function POST(req) {
           (async () => {
             console.log(`[POST /api/dials] 🎙️ Uploading audio (${(audio.size / 1024).toFixed(1)} KB)...`);
             const buf = Buffer.from(await audio.arrayBuffer());
+            console.log(`[POST /api/dials] 🎙️ Audio MIME type: "${audio.type}", buffer length: ${buf.length}`);
+            console.log(`[POST /api/dials] 🎙️ First 16 bytes: ${buf.slice(0, 16).toString('hex')}`);
             const url = await uploadToCloudinary(cld, buf, {
               resource_type: 'video',
               folder: 'heartdial/audio',
